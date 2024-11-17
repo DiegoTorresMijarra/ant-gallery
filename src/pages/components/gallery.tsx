@@ -108,7 +108,7 @@ const StyledCarousel = styled(Carousel)`
 
 // Aplicar fondo con blur oscuro al abrir la preview
 const StyledPreview = styled.div`
-  .ant-image-preview-root {
+  .ant-image-preview-mask {
     backdrop-filter: blur(8px);
     background-color: rgba(0, 0, 0, 0.8) !important;
   }
