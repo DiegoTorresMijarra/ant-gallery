@@ -48,6 +48,10 @@ const StyledCarousel = styled(Carousel)`
 
   .slick-prev,
   .slick-next {
+    color: steelblue;
+
+    position: absolute;
+
     width: 60px; /* Hacer el botón más grande */
     height: 60px; /* Hacer el botón más grande */
     background-color: rgba(
@@ -82,13 +86,21 @@ const StyledCarousel = styled(Carousel)`
     margin: 0; /* Eliminar cualquier margen que pueda descentrar el ícono */
   }
 
-  .slick-prev {
-    left: 20px; /* Posición izquierda */
+  .slick-prev::after {
+    font-weight: bold;
+    position: relative;
+    top: 0;
+    border-inline-width: 4px 0;
+    border-block-width: 4px 0;
+  }
+  .slick-next::after {
+    top: 0;
+    position: relative;
+    inset-inline-start: 0;
+    border-inline-width: 4px 0;
+    border-block-width: 4px 0;
   }
 
-  .slick-next {
-    right: 20px; /* Posición derecha */
-  }
   .slick-dots {
     transform: translateY(30px);
 
@@ -155,7 +167,6 @@ const Gallery: React.FC = () => {
   return (
     <StyledPreview>
       <Layout>
-        {/* Contenido principal */}
         <StyledContent>
           <StyledCarousel autoplay arrows afterChange={onChange}>
             {images.map((src, index) => (
