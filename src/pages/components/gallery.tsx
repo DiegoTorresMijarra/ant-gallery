@@ -39,6 +39,7 @@ const StyledContent = styled(Content)`
 const StyledFooter = styled(Footer)`
   background-color: black;
   padding: 20px;
+  overflow: auto;
 `
 
 const StyledCarousel = styled(Carousel)`
@@ -131,6 +132,7 @@ const StyledPreviewGroup = styled.div`
   justify-content: center;
   gap: 10px;
   overflow-x: auto;
+  min-width: fit-content;
 
   img {
     cursor: pointer;
