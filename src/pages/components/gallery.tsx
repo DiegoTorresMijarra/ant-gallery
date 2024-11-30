@@ -19,6 +19,18 @@ const images = [
   'https://cdn-images-jorge-maria.imgix.net/Boda1.jpg',
   'https://cdn-images-jorge-maria.imgix.net/Boda2.jpg',
   'https://cdn-images-jorge-maria.imgix.net/Boda3.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda1.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda2.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda3.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda1.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda2.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda3.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda1.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda2.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda3.jpg',
 ]
 
 // Estilos personalizados con styled-components
@@ -32,6 +44,8 @@ const StyledFooter = styled(Footer)`
   background-color: black;
   padding: 20px;
   overflow: auto;
+  display: flex;
+  justify-content: center;
 `
 
 const StyledCarousel = styled(Carousel)`
@@ -137,6 +151,11 @@ const StyledPreviewGroup = styled.div`
   }
 `
 
+const StyledDivider = styled.div`
+  width: 80%;
+  overflow: inherit;
+`
+
 const Gallery: React.FC = () => {
   const [current, setCurrent] = React.useState(0)
 
@@ -191,52 +210,60 @@ const Gallery: React.FC = () => {
         </StyledContent>
 
         <StyledFooter>
-          <Image.PreviewGroup
-            preview={{
-              toolbarRender: (
-                _,
-                {
-                  transform: { scale },
-                  actions: {
-                    onActive,
-                    onFlipY,
-                    onFlipX,
-                    onRotateLeft,
-                    onRotateRight,
-                    onZoomOut,
-                    onZoomIn,
+          <StyledDivider>
+            <Image.PreviewGroup
+              preview={{
+                toolbarRender: (
+                  _,
+                  {
+                    transform: { scale },
+                    actions: {
+                      onActive,
+                      onFlipY,
+                      onFlipX,
+                      onRotateLeft,
+                      onRotateRight,
+                      onZoomOut,
+                      onZoomIn,
+                    },
                   },
+                ) => (
+                  <Space size={12} className="toolbar-wrapper">
+                    <LeftOutlined onClick={() => onActive?.(-1)} />
+                    <RightOutlined onClick={() => onActive?.(1)} />
+                    <DownloadOutlined onClick={onDownload} />
+                    <SwapOutlined rotate={90} onClick={onFlipY} />
+                    <SwapOutlined onClick={onFlipX} />
+                    <RotateLeftOutlined onClick={onRotateLeft} />
+                    <RotateRightOutlined onClick={onRotateRight} />
+                    <ZoomOutOutlined
+                      disabled={scale === 1}
+                      onClick={onZoomOut}
+                    />
+                    <ZoomInOutlined
+                      disabled={scale === 50}
+                      onClick={onZoomIn}
+                    />
+                  </Space>
+                ),
+                onChange: (index) => {
+                  setCurrent(index)
                 },
-              ) => (
-                <Space size={12} className="toolbar-wrapper">
-                  <LeftOutlined onClick={() => onActive?.(-1)} />
-                  <RightOutlined onClick={() => onActive?.(1)} />
-                  <DownloadOutlined onClick={onDownload} />
-                  <SwapOutlined rotate={90} onClick={onFlipY} />
-                  <SwapOutlined onClick={onFlipX} />
-                  <RotateLeftOutlined onClick={onRotateLeft} />
-                  <RotateRightOutlined onClick={onRotateRight} />
-                  <ZoomOutOutlined disabled={scale === 1} onClick={onZoomOut} />
-                  <ZoomInOutlined disabled={scale === 50} onClick={onZoomIn} />
-                </Space>
-              ),
-              onChange: (index) => {
-                setCurrent(index)
-              },
-            }}
-          >
-            <StyledPreviewGroup>
-              {images.map((src, index) => (
-                <Image
-                  key={`preview-image-${index}`}
-                  src={src}
-                  alt={`preview-image-${index}`}
-                  width={100}
-                  height={100}
-                />
-              ))}
-            </StyledPreviewGroup>
-          </Image.PreviewGroup>
+              }}
+            >
+              <StyledPreviewGroup>
+                {images.map((src, index) => (
+                  <Image
+                    key={`preview-image-${index}`}
+                    src={src}
+                    alt={`preview-image-${index}`}
+                    width={100}
+                    height={100}
+                  />
+                ))}
+              </StyledPreviewGroup>
+            </Image.PreviewGroup>
+          </StyledDivider>
         </StyledFooter>
       </Layout>
     </StyledPreview>
