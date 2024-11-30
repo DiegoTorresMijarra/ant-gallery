@@ -39,9 +39,14 @@ const StyledCarousel = styled(Carousel)`
   margin: 0 auto;
   position: relative;
 
+  .slick-track {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
   .slick-prev,
   .slick-next {
-    color: steelblue;
+    color: blueviolet;
 
     position: absolute;
 
@@ -162,7 +167,11 @@ const Gallery: React.FC = () => {
     <StyledPreview>
       <Layout>
         <StyledContent>
-          <StyledCarousel autoplay arrows afterChange={onChange}>
+          <StyledCarousel
+            // autoplay
+            arrows
+            afterChange={onChange}
+          >
             {images.map((src, index) => (
               <div
                 key={`carousel-image-${index}`}
@@ -171,10 +180,10 @@ const Gallery: React.FC = () => {
                 <Image
                   src={src}
                   alt={`carousel-image-${index}`}
-                  width={800}
-                  height={450}
+                  // width={800}
+                  // height={450}
                   preview={false}
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'contain', maxWidth: 'fit-content' }}
                 />
               </div>
             ))}
