@@ -12,27 +12,34 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
-    * {
-        scrollbar-width: thin;
-        scrollbar-color: #b374f5 #f4f4f4;
-    }
+    //
+    //* {
+    //    scrollbar-width: thin;
+    //    scrollbar-color: #b374f5 #f4f4f4;
+    //    scrollbar-track-color: rgba(45, 4, 75, 0.81);
+    //}
+
 
     ::-webkit-scrollbar {
         width: 8px;
+        background: #0a0a0a;
     }
 
     ::-webkit-scrollbar-thumb {
-        background: linear-gradient(45deg, #b374f5, #669ff5);
-        border-radius: 10px;
+        background: linear-gradient(#669ff5, #b374f5, #669ff5);
+        border-radius: 20px;
+        border: 1px solid #0a0a0a;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(45deg, #b374f5, #669ff5);
+        background: linear-gradient(#3b84f1, #983ef8, #3b84f1);
     }
 
     ::-webkit-scrollbar-track {
-        background: #f4f4f4;
-        border-radius: 10px;
+        background: rgba(45, 4, 75, 0.89);
+        //background: linear-gradient(45deg, #669ff5, #b374f5);
+
+        border-radius: 20px;
     }
 `
 
