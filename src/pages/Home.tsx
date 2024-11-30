@@ -1,7 +1,6 @@
 import React from 'react'
 import Gallery from '@/pages/components/gallery'
 import { Content, Header } from 'antd/es/layout/layout'
-import Title from 'antd/es/typography/Title'
 import styled from 'styled-components'
 
 const Home = () => (
@@ -19,6 +18,12 @@ const HeaderEdited = styled(Header)`
   * {
     margin: 0;
   }
+`
+
+const Title = styled.h1`
+  color: white;
+  font-size: 2rem;
+  text-align: center;
 `
 
 export default Home
