@@ -186,11 +186,7 @@ const Gallery: React.FC = () => {
     <StyledPreview>
       <Layout>
         <StyledContent>
-          <StyledCarousel
-            // autoplay
-            arrows
-            afterChange={onChange}
-          >
+          <StyledCarousel autoplay arrows afterChange={onChange}>
             {images.map((src, index) => (
               <div
                 key={`carousel-image-${index}`}
