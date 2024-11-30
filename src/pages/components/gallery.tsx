@@ -15,18 +15,10 @@ import styled from 'styled-components'
 const { Footer, Content } = Layout
 
 const images = [
-  'https://cdn-images-jorge-maria.imgix.net/2x1.jpg',
-  'https://cdn-images-jorge-maria.imgix.net/8e37c6fa-1667-498e-ac63-d06de4d52f83.webp',
-  'https://cdn-images-jorge-maria.imgix.net/400.png',
-  'https://cdn-images-jorge-maria.imgix.net/1620402630-laravel.png',
-  'https://cdn-images-jorge-maria.imgix.net/bebidas.jpeg',
-  'https://cdn-images-jorge-maria.imgix.net/bruja.png',
-  'https://cdn-images-jorge-maria.imgix.net/CapturaPortfolio.PNG',
-  'https://cdn-images-jorge-maria.imgix.net/CapturaPortfolio2.PNG',
-  'https://cdn-images-jorge-maria.imgix.net/CapturaPortfolio3.PNG',
-  'https://cdn-images-jorge-maria.imgix.net/contacto.png',
-  'https://cdn-images-jorge-maria.imgix.net/croqueta.jpg',
-  'https://cdn-images-jorge-maria.imgix.net/entrantes.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda1.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda2.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda3.jpg',
 ]
 
 // Estilos personalizados con styled-components
@@ -189,7 +181,6 @@ const Gallery: React.FC = () => {
           </StyledCarousel>
         </StyledContent>
 
-        {/* Footer con el selector de imágenes */}
         <StyledFooter>
           <Image.PreviewGroup
             preview={{
