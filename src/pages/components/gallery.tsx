@@ -56,6 +56,7 @@ const StyledContent = styled(Content)`
   padding: 20px;
   background-color: black;
   //min-height: 80vh;
+  //position: relative;
 `
 
 const StyledFooter = styled(Footer)`
@@ -71,6 +72,10 @@ const StyledCarousel = styled(Carousel)`
   max-width: 800px;
   margin: 0 auto;
   position: relative;
+
+  @media (max-width: 600px) {
+    transform: translateY(20%);
+  }
 
   .slick-track {
     display: flex;
