@@ -11,6 +11,7 @@ import {
 } from '@ant-design/icons'
 import { Carousel, Image, Layout, Space } from 'antd'
 import styled from 'styled-components'
+import { Header } from 'antd/es/layout/layout'
 
 const { Footer, Content } = Layout
 
@@ -156,6 +157,18 @@ const StyledDivider = styled.div`
   overflow: inherit;
 `
 
+const HeaderEdited = styled(Header)`
+  * {
+    margin: 0;
+  }
+`
+
+const Title = styled.h1`
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+`
+
 const Gallery: React.FC = () => {
   const [current, setCurrent] = React.useState(0)
 
@@ -185,6 +198,9 @@ const Gallery: React.FC = () => {
   return (
     <StyledPreview>
       <Layout>
+        <HeaderEdited>
+          <Title>Jorge y María</Title>
+        </HeaderEdited>
         <StyledContent>
           <StyledCarousel autoplay arrows afterChange={onChange}>
             {images.map((src, index) => (

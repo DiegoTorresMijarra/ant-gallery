@@ -1,29 +1,11 @@
 import React from 'react'
 import Gallery from '@/pages/components/gallery'
-import { Content, Header } from 'antd/es/layout/layout'
-import styled from 'styled-components'
+import { Content } from 'antd/es/layout/layout'
 
 const Home = () => (
-  <div className="App">
-    <HeaderEdited>
-      <Title>Jorge y María</Title>
-    </HeaderEdited>
-    <Content>
-      <Gallery />
-    </Content>
-  </div>
+  <Content className="App">
+    <Gallery />
+  </Content>
 )
-
-const HeaderEdited = styled(Header)`
-  * {
-    margin: 0;
-  }
-`
-
-const Title = styled.h1`
-  color: white;
-  font-size: 2rem;
-  text-align: center;
-`
 
 export default Home
