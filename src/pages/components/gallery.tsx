@@ -35,20 +35,38 @@ const images = [
 ]
 
 // Estilos personalizados con styled-components
-const StyledContent = styled(Content)`
-  min-height: 80vh;
-  padding: 20px;
-  background-color: black;
+
+// Contenedor principal
+const StyledLayout = styled(Layout)`
+  height: 100vh; /* Altura de toda la ventana */
+  display: flex;
+  flex-direction: column;
 `
 
-const StyledFooter = styled(Footer)`
-  background-color: black;
-  padding: 20px;
-  overflow: auto;
+const StyledHeader = styled(Header)`
+  flex: 0 0 10%; /* El header ocupa el 10% del alto */
+  background: #263cc9;
   display: flex;
+  align-items: center;
   justify-content: center;
 `
 
+const StyledContent = styled(Content)`
+  flex: 1;
+  padding: 20px;
+  background-color: black;
+  //min-height: 80vh;
+`
+
+const StyledFooter = styled(Footer)`
+  flex: 0 0 150px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow: auto;
+`
 const StyledCarousel = styled(Carousel)`
   max-width: 800px;
   margin: 0 auto;
@@ -197,10 +215,10 @@ const Gallery: React.FC = () => {
 
   return (
     <StyledPreview>
-      <Layout>
-        <HeaderEdited>
+      <StyledLayout>
+        <StyledHeader>
           <Title>Jorge y María</Title>
-        </HeaderEdited>
+        </StyledHeader>
         <StyledContent>
           <StyledCarousel autoplay arrows afterChange={onChange}>
             {images.map((src, index) => (
@@ -277,7 +295,7 @@ const Gallery: React.FC = () => {
             </Image.PreviewGroup>
           </StyledDivider>
         </StyledFooter>
-      </Layout>
+      </StyledLayout>
     </StyledPreview>
   )
 }
