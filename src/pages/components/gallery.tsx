@@ -60,14 +60,23 @@ const StyledContent = styled(Content)`
 `
 
 const StyledFooter = styled(Footer)`
-  flex: 0 0 150px;
+  flex: 0 0 10%;
+  min-height: fit-content;
   background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   padding: 20px;
-  overflow: auto;
+  overflow-x: auto;
 `
+const ExplanationText = styled.p`
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 10px; /* Espacio entre el texto y las imágenes */
+`
+
 const StyledCarousel = styled(Carousel)`
   max-width: 800px;
   margin: 0 auto;
@@ -75,6 +84,10 @@ const StyledCarousel = styled(Carousel)`
 
   @media (max-width: 600px) {
     transform: translateY(20%);
+  }
+
+  @media (max-width: 450px) {
+    transform: translateY(50%);
   }
 
   .slick-track {
@@ -180,12 +193,6 @@ const StyledDivider = styled.div`
   overflow: inherit;
 `
 
-const HeaderEdited = styled(Header)`
-  * {
-    margin: 0;
-  }
-`
-
 const Title = styled.h1`
   color: white;
   font-size: 2rem;
@@ -245,6 +252,9 @@ const Gallery: React.FC = () => {
         </StyledContent>
 
         <StyledFooter>
+          <ExplanationText>
+            &larr; Deslízame y selecciona una foto &rarr;
+          </ExplanationText>
           <StyledDivider>
             <Image.PreviewGroup
               preview={{

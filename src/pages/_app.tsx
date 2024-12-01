@@ -27,13 +27,13 @@ const GlobalStyle = createGlobalStyle`
     }
 
     ::-webkit-scrollbar-thumb {
-        background: linear-gradient(#669ff5, #b374f5, #669ff5);
+        background: linear-gradient(90deg, #669ff5, #b374f5, #669ff5);
         border-radius: 20px;
         border: 1px solid #0a0a0a;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(#3b84f1, #983ef8, #3b84f1);
+        background: linear-gradient(90deg, #3b84f1, #983ef8, #3b84f1);
     }
 
     ::-webkit-scrollbar-track {
