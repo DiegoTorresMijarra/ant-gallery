@@ -245,7 +245,6 @@ const Gallery: React.FC = () => {
                   // height={450}
                   preview={false}
                   style={{ objectFit: 'contain', maxWidth: 'fit-content' }}
-                  loading={'lazy'}
                 />
               </div>
             ))}
@@ -305,7 +304,6 @@ const Gallery: React.FC = () => {
                     alt={`preview-image-${index}`}
                     width={100}
                     height={100}
-                    loading={'lazy'}
                   />
                 ))}
               </StyledPreviewGroup>
