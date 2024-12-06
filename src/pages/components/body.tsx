@@ -1,6 +1,15 @@
-import React from 'react'
 import styled from 'styled-components'
-import { Carousel, Image } from 'antd'
+import { Carousel, Image, Space } from 'antd'
+import {
+  DownloadOutlined,
+  RotateLeftOutlined,
+  RotateRightOutlined,
+  SwapOutlined,
+  ZoomInOutlined,
+  ZoomOutOutlined,
+} from '@ant-design/icons'
+import { CarouselRef } from 'antd/es/carousel'
+import React from 'react'
 
 const StyledContent = styled.div`
   flex: 1; /* Ocupa el espacio restante en el layout */
@@ -25,6 +34,7 @@ const StyledCarousel = styled(Carousel)`
     align-items: center;
     column-gap: 10px;
   }
+
   .slick-prev,
   .slick-next {
     color: blueviolet;
@@ -95,32 +105,80 @@ const StyledCarousel = styled(Carousel)`
       }
     }
   }
+
+  .slick-active {
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 `
 
 const ImageStyled = styled(Image)`
   max-width: 100%;
   max-height: 70vh; /* Altura máxima ajustada al viewport */
   object-fit: contain; /* Mantiene la proporción de las imágenes */
-  display: block;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `
 
 interface BodyProps {
   images: string[]
   onChange: (currentSlide: number) => void
+  onDownload: () => void
+  carouselRef: React.RefObject<CarouselRef>
+  goToImage: (index: number) => void
 }
 
-const AppBody: React.FC<BodyProps> = ({ images = [], onChange }: BodyProps) => {
+const AppBody: React.FC<BodyProps> = ({
+  images = [],
+  onChange,
+  onDownload,
+  carouselRef,
+}: BodyProps) => {
   return (
     <StyledContent>
-      <StyledCarousel arrows afterChange={onChange}>
+      <StyledCarousel arrows afterChange={onChange} ref={carouselRef}>
         {images.map((src, index) => (
-          <div key={`carousel-image-${index}`}>
-            <ImageStyled
-              src={src}
-              alt={`carousel-image-${index}`}
-              preview={false}
-            />
-          </div>
+          <ImageStyled
+            src={src}
+            alt={`carousel-image-${index}`}
+            key={`carousel-image-${index}`}
+            preview={{
+              toolbarRender: (
+                _,
+                {
+                  transform: { scale },
+                  actions: {
+                    onFlipY,
+                    onFlipX,
+                    onRotateLeft,
+                    onRotateRight,
+                    onZoomOut,
+                    onZoomIn,
+                  },
+                },
+              ) => (
+                <Space size={12} className="toolbar-wrapper">
+                  <DownloadOutlined onClick={onDownload} />
+                  <SwapOutlined rotate={90} onClick={onFlipY} />
+                  <SwapOutlined onClick={onFlipX} />
+                  <RotateLeftOutlined onClick={onRotateLeft} />
+                  <RotateRightOutlined onClick={onRotateRight} />
+                  <ZoomOutOutlined disabled={scale === 1} onClick={onZoomOut} />
+                  <ZoomInOutlined disabled={scale === 50} onClick={onZoomIn} />
+                </Space>
+              ),
+            }}
+          />
         ))}
       </StyledCarousel>
     </StyledContent>

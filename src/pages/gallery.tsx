@@ -1,9 +1,10 @@
 // App.tsx
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 import AppHeader from '@/pages/components/header'
 import AppBody from '@/pages/components/body'
 import AppFooter from '@/pages/components/footer'
+import { CarouselRef } from 'antd/es/carousel'
 
 const StyledLayout = styled.div`
   height: 100vh;
@@ -48,6 +49,22 @@ const images = [
   'https://cdn-images-jorge-maria.imgix.net/Boda1.jpg',
   'https://cdn-images-jorge-maria.imgix.net/Boda2.jpg',
   'https://cdn-images-jorge-maria.imgix.net/Boda3.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda1.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda2.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda3.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda1.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda2.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda3.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda1.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda2.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda3.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda1.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda2.jpg',
+  'https://cdn-images-jorge-maria.imgix.net/Boda3.jpg',
 ]
 
 const App: React.FC = () => {
@@ -77,15 +94,29 @@ const App: React.FC = () => {
       })
   }
 
+  const carouselRef = useRef<CarouselRef>(null)
+
+  const goToImage = (index: number) => {
+    if (carouselRef.current) {
+      carouselRef.current.goTo(index)
+    }
+  }
+
   return (
     <StyledLayout>
       <AppHeader />
-      <AppBody images={images} onChange={onChange} />
+      <AppBody
+        images={images}
+        onChange={onChange}
+        onDownload={onDownload}
+        carouselRef={carouselRef}
+        goToImage={goToImage}
+      />
       <AppFooter
         images={images}
         current={current}
         setCurrent={setCurrent}
-        onDownload={onDownload}
+        goToImage={goToImage}
       />
     </StyledLayout>
   )

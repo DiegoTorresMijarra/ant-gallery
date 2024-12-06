@@ -1,15 +1,16 @@
 // Footer.tsx
 import React from 'react'
 import styled from 'styled-components'
-import { DownloadOutlined } from '@ant-design/icons'
 import { Image } from 'antd'
 
 const StyledFooter = styled.footer`
   flex: 0 0 10%;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
@@ -55,7 +56,10 @@ const PreviewGroupWrapper = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;
-  overflow-x: auto;
+
+  //overflow-x: auto;
+  //width: 100%;
+  //min-width: fit-content;
 
   img {
     cursor: pointer;
@@ -79,20 +83,17 @@ interface FooterProps {
   images: string[]
   current: number
   setCurrent: (index: number) => void
-  onDownload: () => void
+  goToImage: (index: number) => void
 }
 
 const AppFooter: React.FC<FooterProps> = ({
   images = [],
   current,
   setCurrent,
-  onDownload,
+  goToImage,
 }: FooterProps) => {
   return (
     <StyledFooter>
-      <ExplanationText>
-        &larr; Desliza para explorar las fotos &rarr;
-      </ExplanationText>
       <PreviewGroupWrapper>
         {images.map((src, index) => (
           <StyledImage
@@ -102,15 +103,17 @@ const AppFooter: React.FC<FooterProps> = ({
             width={60}
             height={60}
             preview={false}
-            onClick={() => setCurrent(index)}
+            onClick={() => {
+              setCurrent(index)
+              goToImage(index)
+            }}
             selected={index === current}
           />
         ))}
       </PreviewGroupWrapper>
-      <DownloadOutlined
-        onClick={onDownload}
-        style={{ fontSize: '20px', cursor: 'pointer' }}
-      />
+      <ExplanationText>
+        &larr; Desliza para explorar las fotos &rarr;
+      </ExplanationText>
     </StyledFooter>
   )
 }
