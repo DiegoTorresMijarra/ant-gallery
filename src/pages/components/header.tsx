@@ -5,6 +5,9 @@ import { Header } from 'antd/es/layout/layout'
 
 const StyledHeader = styled(Header)`
   flex: 0 0 10%;
+  width: 100%;
+  height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,8 +15,6 @@ const StyledHeader = styled(Header)`
   color: #e2e8f0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 
-  width: 100%;
-  height: 100%;
   background: linear-gradient(
       135deg,
       rgba(15, 23, 42, 1) 0%,

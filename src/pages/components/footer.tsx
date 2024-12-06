@@ -6,6 +6,9 @@ import { Image } from 'antd'
 
 const StyledFooter = styled.footer`
   flex: 0 0 10%;
+  width: 100%;
+  height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,8 +16,6 @@ const StyledFooter = styled.footer`
   color: #e2e8f0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 
-  width: 100%;
-  height: 100%;
   background: linear-gradient(
       135deg,
       rgba(15, 23, 42, 1) 0%,
@@ -68,6 +69,12 @@ const PreviewGroupWrapper = styled.div`
   }
 `
 
+const StyledImage = styled(Image)<{ selected: boolean }>`
+  border: ${({ selected }) =>
+    selected ? '2px solid #263cc9' : '2px solid transparent'};
+  border-radius: 50%;
+`
+
 interface FooterProps {
   images: string[]
   current: number
@@ -88,7 +95,7 @@ const AppFooter: React.FC<FooterProps> = ({
       </ExplanationText>
       <PreviewGroupWrapper>
         {images.map((src, index) => (
-          <Image
+          <StyledImage
             key={`preview-image-${index}`}
             src={src}
             alt={`preview-image-${index}`}
@@ -96,6 +103,7 @@ const AppFooter: React.FC<FooterProps> = ({
             height={60}
             preview={false}
             onClick={() => setCurrent(index)}
+            selected={index === current}
           />
         ))}
       </PreviewGroupWrapper>
