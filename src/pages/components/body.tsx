@@ -76,7 +76,7 @@ interface BodyProps {
   onChange: (currentSlide: number) => void
 }
 
-const AppBody: React.FC<BodyProps> = ({ images, onChange }) => {
+const AppBody: React.FC<BodyProps> = ({ images, onChange }: BodyProps) => {
   return (
     <StyledContent>
       <StyledCarousel arrows afterChange={onChange}>

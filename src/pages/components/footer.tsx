@@ -87,7 +87,7 @@ const AppFooter: React.FC<FooterProps> = ({
   current,
   setCurrent,
   onDownload,
-}) => {
+}: FooterProps) => {
   return (
     <StyledFooter>
       <ExplanationText>
