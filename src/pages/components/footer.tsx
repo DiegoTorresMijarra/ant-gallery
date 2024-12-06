@@ -99,23 +99,26 @@ const AppFooter: React.FC<FooterProps> = ({
 }: FooterProps) => {
   return (
     <StyledFooter>
-      <PreviewGroupWrapper>
-        {images.map((src, index) => (
-          <StyledImage
-            key={`preview-image-${index}`}
-            src={src}
-            alt={`preview-image-${index}`}
-            width={60}
-            height={60}
-            preview={false}
-            onClick={() => {
-              setCurrent(index)
-              goToImage(index)
-            }}
-            selected={index === current}
-          />
-        ))}
-      </PreviewGroupWrapper>
+      <div style={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
+        <PreviewGroupWrapper>
+          {images.map((src, index) => (
+            <StyledImage
+              key={`preview-image-${index}`}
+              src={src}
+              alt={`preview-image-${index}`}
+              width={60}
+              height={60}
+              preview={false}
+              onClick={() => {
+                setCurrent(index)
+                goToImage(index)
+              }}
+              selected={index === current}
+            />
+          ))}
+        </PreviewGroupWrapper>
+      </div>
+
       <ExplanationText>
         &larr; Desliza para explorar las fotos &rarr;
       </ExplanationText>
