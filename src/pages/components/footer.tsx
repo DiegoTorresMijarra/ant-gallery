@@ -83,7 +83,7 @@ interface FooterProps {
 }
 
 const AppFooter: React.FC<FooterProps> = ({
-  images,
+  images = [],
   current,
   setCurrent,
   onDownload,
