@@ -1,4 +1,3 @@
-// Footer.tsx
 import React from 'react'
 import styled from 'styled-components'
 import { Image } from 'antd'
@@ -7,7 +6,8 @@ const StyledFooter = styled.footer`
   flex: 0 0 10%;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden; /* Evita el scroll vertical */
 
   display: flex;
   flex-direction: column;
@@ -54,18 +54,21 @@ const ExplanationText = styled.p`
 
 const PreviewGroupWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; /* Asegura que las imágenes se alineen al principio */
   gap: 10px;
+  width: 90%; /* Asegura que ocupe el 100% del ancho */
+  height: 100%;
 
-  //overflow-x: auto;
-  //width: 100%;
-  //min-width: fit-content;
+  overflow-x: auto; /* Permite el scroll horizontal */
+  overflow-y: hidden; /* Evita el scroll vertical */
 
   img {
     cursor: pointer;
     object-fit: cover;
     border: 2px solid transparent;
     transition: border 0.3s ease;
+    min-width: 60px; /* Tamaño fijo para las imágenes */
+    min-height: 60px; /* Tamaño fijo para las imágenes */
 
     &:hover {
       border-color: #263cc9;
@@ -77,6 +80,8 @@ const StyledImage = styled(Image)<{ selected: boolean }>`
   border: ${({ selected }) =>
     selected ? '2px solid #263cc9' : '2px solid transparent'};
   border-radius: 50%;
+  min-height: 100%;
+  min-width: 60px;
 `
 
 interface FooterProps {
