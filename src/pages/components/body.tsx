@@ -18,48 +18,81 @@ const StyledCarousel = styled(Carousel)`
   height: 100%;
   max-height: 80vh; /* Altura máxima adaptada al viewport */
   position: relative;
+  margin: 0 auto;
 
-  .slick-slide {
+  .slick-track {
     display: flex;
-    justify-content: center;
     align-items: center;
+    column-gap: 10px;
   }
-
   .slick-prev,
   .slick-next {
     color: blueviolet;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(169, 169, 169, 0.5);
-    border-radius: 50%;
+
+    position: absolute;
+
+    width: 60px; /* Hacer el botón más grande */
+    height: 60px; /* Hacer el botón más grande */
+    background-color: rgba(
+      169,
+      169,
+      169,
+      0.5
+    ); /* Fondo gris azulado transparente */
+    border-radius: 50%; /* Forma circular */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
+    opacity: 1;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: rgba(169, 169, 169, 0.8);
-    }
-
-    &:before {
-      font-size: 24px;
-      color: white;
+      background-color: rgba(
+        169,
+        169,
+        169,
+        0.8
+      ); /* Fondo más opaco al hacer hover */
     }
   }
 
-  .slick-dots {
-    bottom: -20px;
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 30px; /* Hacer los íconos más grandes */
+    color: white; /* Cambiar color de los íconos */
+    display: block; /* Asegurarse de que el icono ocupe el espacio completo */
+    margin: 0; /* Eliminar cualquier margen que pueda descentrar el ícono */
+  }
 
-    li button {
-      width: 10px;
-      height: 10px;
-      background-color: gray;
-      border-radius: 50%;
+  .slick-prev::after {
+    font-weight: bold;
+    position: relative;
+    top: 0;
+    border-inline-width: 4px 0;
+    border-block-width: 4px 0;
+  }
+  .slick-next::after {
+    top: 0;
+    position: relative;
+    inset-inline-start: 0;
+    border-inline-width: 4px 0;
+    border-block-width: 4px 0;
+  }
+
+  .slick-dots {
+    transform: translateY(30px);
+
+    li {
+      button {
+        background-color: gray; /* Color de los dots inactivos */
+      }
     }
 
-    li.slick-active button {
-      background-color: blueviolet;
+    li.slick-active {
+      button {
+        background-color: blueviolet; /* Color del dot activo */
+      }
     }
   }
 `
@@ -76,7 +109,7 @@ interface BodyProps {
   onChange: (currentSlide: number) => void
 }
 
-const AppBody: React.FC<BodyProps> = ({ images, onChange }: BodyProps) => {
+const AppBody: React.FC<BodyProps> = ({ images = [], onChange }: BodyProps) => {
   return (
     <StyledContent>
       <StyledCarousel arrows afterChange={onChange}>
