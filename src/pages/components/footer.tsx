@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Image } from 'antd'
 
 const StyledFooter = styled.footer`
-  flex: 0 0 10%;
+  flex: 0 0 12%;
   width: 100%;
   height: 100%;
   overflow-x: auto;

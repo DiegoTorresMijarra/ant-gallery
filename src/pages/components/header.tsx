@@ -1,10 +1,9 @@
-// Header.tsx
 import React from 'react'
 import styled from 'styled-components'
 import { Header } from 'antd/es/layout/layout'
 
 const StyledHeader = styled(Header)`
-  flex: 0 0 10%;
+  flex: 0 0 8%;
   width: 100%;
   height: 100%;
 
