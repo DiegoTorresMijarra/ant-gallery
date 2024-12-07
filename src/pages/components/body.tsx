@@ -135,7 +135,6 @@ interface BodyProps {
   onChange: (currentSlide: number) => void
   onDownload: () => void
   carouselRef: React.RefObject<CarouselRef>
-  goToImage: (index: number) => void
 }
 
 const AppBody: React.FC<BodyProps> = ({

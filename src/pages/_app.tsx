@@ -42,6 +42,23 @@ const GlobalStyle = createGlobalStyle`
 
         border-radius: 20px;
     }
+
+    .ant-image-preview {
+        background-color: #000000b3;
+    }
+
+    //.toolbar-wrapper {
+    //    background-color: #000000;
+    //}
+    
+    .ant-space-item {
+        background: #0a0a0a;
+        border: 1px solid #0a0a0a;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `
 
 const App = ({ Component, pageProps }: AppProps) => (
