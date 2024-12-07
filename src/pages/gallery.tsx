@@ -111,7 +111,6 @@ const App: React.FC = () => {
         onChange={onChange}
         onDownload={onDownload}
         carouselRef={carouselRef}
-        goToImage={goToImage}
       />
       <AppFooter
         images={images}
