@@ -5,6 +5,7 @@ import AppHeader from '@/pages/components/header'
 import AppBody from '@/pages/components/body'
 import AppFooter from '@/pages/components/footer'
 import { CarouselRef } from 'antd/es/carousel'
+import dynamic from 'next/dynamic'
 
 const StyledLayout = styled.div`
   height: 100vh;
@@ -122,4 +123,8 @@ const App: React.FC = () => {
   )
 }
 
-export default App
+export default dynamic(() => Promise.resolve(App), {
+  ssr: false,
+})
+
+// export default App
